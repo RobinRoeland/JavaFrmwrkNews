@@ -1,0 +1,38 @@
+html{
+    user-select: none;
+}
+
+form > div {
+    top: 15%;
+    left: 25%;
+    right: 25%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    align-items: center;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        label{
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        input{
+            height: 3vh;
+        }
+
+        textarea {
+            height: 10vh;
+        }
+    }
+
+    input[type="submit"] {
+        width: 15vw;
+        height: 5vh;
+    }
+}

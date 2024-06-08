@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- thymeleaf used to inject Java in html -->
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Needed for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+  <div id="articles">
+      <div id="title-add"><h1>Articles</h1> <button onclick="window.location.href='add'">Add</button></div>
+      <table id="articles_table" class="table">
+          <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+              </tr>
+          </thead>
+          <tbody th:unless="${#lists.isEmpty(list)}">
+          <!-- with for each from thymeleaf -->
+          <!-- article = iteration var, expression is iterated expression -->
+          <tr th:each="article : ${list}">
+              <td><a th:href="('article?articleId=' + ${article.id})" th:text="${article.title}"></a></td>
+              <td><span th:text="${article.author}"></span></td>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+</body>
+</html>
