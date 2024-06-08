@@ -39,15 +39,9 @@
             }
         }
     }
-    #title-add{
-        display: grid;
-        grid: 100% / auto auto;
-        button{
-            width: 15vw;
-            height: 5vh;
-            align-self: center;
-            justify-self: right;
-        }
-    }
 
+    button{
+        width: 15vw;
+        height: 5vh;
+    }
 }
