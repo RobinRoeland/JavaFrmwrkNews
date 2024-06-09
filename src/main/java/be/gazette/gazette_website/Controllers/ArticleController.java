@@ -15,6 +15,11 @@ public class ArticleController {
     @Autowired
     ArticleCRUDRepo repo;
 
+    @GetMapping("/about")
+    public String about(Model model) {
+        return "about";
+    }
+
     @GetMapping("/index")
     public String index(Model model) {
         model.addAttribute("list", repo.findAll());
@@ -31,24 +36,24 @@ public class ArticleController {
         return repo.findByTitle(title);
     }
 
-    @GetMapping("/add")
+    @GetMapping("/new")
     public String add(Model model){
         model.addAttribute("article", new Article());
-        return "addpage";
+        return "new";
     }
 
-    @GetMapping("/addsave")
+    @GetMapping("/newsave")
     public String addArticle(Article article){
         repo.save(article);
         return "redirect:/articles/index";
     }
 
-    @GetMapping("/article")
+    @GetMapping("/details")
     public String article(@RequestParam(name="articleId") Long articleId, Model model){
         if (repo.findById(articleId).isPresent()){
             Article article = repo.findById(articleId).get();
             model.addAttribute("article", article);
-            return "article";
+            return "details";
         }
         return "redirect:/articles/index";
     }

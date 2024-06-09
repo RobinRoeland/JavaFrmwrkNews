@@ -1,35 +1,34 @@
 <!DOCTYPE html>
-<!-- thymeleaf used to inject Java in html -->
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
-    <!-- Needed for mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>index</title>
     <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
-  <div id="articles">
-      <h1>Articles</h1>
-      <table id="articles_table" class="table">
-          <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th></th>
-              </tr>
-          </thead>
-          <tbody th:unless="${#lists.isEmpty(list)}">
-          <!-- with for each from thymeleaf -->
-          <!-- article = iteration var, expression is iterated expression -->
-          <tr th:each="article : ${list}">
-              <td th:text="${article.title}"></td>
-              <td><span th:text="${article.author}"></span></td>
-              <td><a th:href="('article?articleId=' + ${article.id})">details</a></td>
-          </tr>
-          </tbody>
-      </table>
-      <button onclick="window.location.href='add'">Add</button>
-  </div>
+    <div th:include="fragments/header :: header">Header</div>
+    <div id="page">
+        <div id="articles">
+            <h1>Articles</h1>
+            <table id="articles_table" class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody th:unless="${#lists.isEmpty(list)}">
+                    <tr th:each="article : ${list}">
+                        <td th:text="${article.title}"></td>
+                        <td><span th:text="${article.author}"></span></td>
+                        <td><a th:href="('details?articleId=' + ${article.id})">details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="window.location.href='new'">Add</button>
+        </div>
+    </div>
+    <div th:include="fragments/footer :: footer">Footer</div>
 </body>
 </html>
