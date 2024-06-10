@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="'Article: ' + ${article.title}"></title>
+    <link rel="stylesheet" th:href="@{/css/details.css}">
 </head>
 <body>
     <div th:include="fragments/header :: header">Header</div>
     <div id="page">
         <h1 th:text="${article.title}"></h1>
-        <span th:text="${article.content}"></span>
+        <h3 th:text="${article.category}"></h3>
+        <p th:text="${article.content}"></p>
+        <h4 th:text="${article.author}">Author: </h4>
+        <h5 th:text="${article.email}">Email: </h5>
+        <h6 th:text="${article.dateCreated.toString()}">Date: </h6>
     </div>
     <div th:include="fragments/footer :: footer">Footer</div>
 </body>

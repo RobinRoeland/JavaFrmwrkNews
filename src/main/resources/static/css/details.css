@@ -1,0 +1,9 @@
+#page{
+    overflow-y:auto;
+    height:84vh;
+
+    p {
+        white-space: pre-line;
+        width: 98%;
+    }
+}

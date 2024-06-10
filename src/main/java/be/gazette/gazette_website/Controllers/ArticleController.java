@@ -5,7 +5,10 @@ import be.gazette.gazette_website.ArticleCRUDRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -16,12 +19,17 @@ public class ArticleController {
     ArticleCRUDRepo repo;
 
     @GetMapping("/about")
-    public String about(Model model) {
+    public String about() {
         return "about";
     }
-
     @GetMapping("/index")
     public String index(Model model) {
+        model.addAttribute("list", repo.findTop10ByOrderByDateCreatedDesc());
+        return "index";
+    }
+
+    @GetMapping("/indexall")
+    public String index10(Model model) {
         model.addAttribute("list", repo.findAll());
         return "index";
     }
@@ -31,11 +39,6 @@ public class ArticleController {
         return repo.findByTitleContaining(title);
     }
 
-    @GetMapping("/getArticleByTitle")
-    public Article getArticleByTitle(@RequestParam(name="title", required=false, defaultValue="World") String title) {
-        return repo.findByTitle(title);
-    }
-
     @GetMapping("/new")
     public String add(Model model){
         model.addAttribute("article", new Article());
@@ -43,7 +46,10 @@ public class ArticleController {
     }
 
     @GetMapping("/newsave")
-    public String addArticle(Article article){
+    public String addArticle(@Valid Article article, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "new";
+        }
         repo.save(article);
         return "redirect:/articles/index";
     }

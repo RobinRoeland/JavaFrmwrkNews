@@ -10,18 +10,20 @@ import java.sql.Date;
 @Entity
 public class Article {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id = 0L;
-    @NotNull
+    @NotNull(message = "Title cannot be empty!")
     private String title;
-    @NotNull
+    @NotNull(message = "Category cannot be empty!")
     private String category;
-    @NotNull
+    @NotNull(message = "Author cannot be empty!")
     private String author;
-    @NotNull
+    @NotNull(message = "Email cannot be empty!")
     private String email;
-    @NotNull
+    @NotNull(message = "Content cannot be empty!")
+    @Column(columnDefinition = "MEDIUMTEXT", nullable = false)
     private String content;
+    @NotNull(message = "DateCreated cannot be empty!")
     @Temporal(TemporalType.DATE)
     private Date dateCreated;
 
@@ -41,4 +43,3 @@ public class Article {
     public Date getDateCreated() { return dateCreated; }
     public void setDateCreated(Date dateCreated) { this.dateCreated = dateCreated; }
 }
-

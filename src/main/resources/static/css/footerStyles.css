@@ -12,6 +12,7 @@ body{
     bottom: 0;
     width: 98%;
     padding: 1% 1% 0 1%;
+    flex-shrink: 0;
 
     hr {
         border-color: whitesmoke;

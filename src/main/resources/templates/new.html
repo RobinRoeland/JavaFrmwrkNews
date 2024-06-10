@@ -12,28 +12,32 @@
             <div>
                 <div>
                     <label for="title">Title</label>
-                    <input type="text" th:field="*{title}" id="title" placeholder="Major storm destroys city.">
+                    <input type="text" th:field="*{title}" id="title" placeholder="Major storm destroys city." required>
+                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</p>
                 </div>
                 <div>
                     <label for="category">category</label>
-                    <input type="text" th:field="*{category}" id="category" value="Disaster" placeholder="Disaster">
+                    <input type="text" th:field="*{category}" id="category" value="Disaster" placeholder="Disaster" required>
+                    <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error">Category Error</p>
                 </div>
                 <div>
                     <label for="content">content</label>
-                    <textarea style="resize: none;" th:field="*{content}" id="content" placeholder="Major storm destroys city 'Rome' in Italy. So far there are 3 found dead and 23 injured."></textarea>
+                    <textarea style="resize: none;" th:field="*{content}" maxlength="16777215" id="content" placeholder="Major storm destroys city 'Rome' in Italy. So far there are 3 found dead and 23 injured." required></textarea>
+                    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error"></p>
                 </div>
                 <div>
                     <label for="email">email</label>
-                    <input type="email" id="email" th:field="*{email}" value="testemail@gmail.com" placeholder="testemail@gmail.com">
+                    <input type="email" id="email" th:field="*{email}" value="testemail@gmail.com" placeholder="testemail@gmail.com" required>
+                    <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></p>
                 </div>
                 <div>
                     <label for="author">author</label>
-                    <input type="text" id="author" th:field="*{author}" value="Me" placeholder="testUser123">
+                    <input type="text" id="author" th:field="*{author}" value="Me" placeholder="testUser123" required>
                 </div>
                 <input type="submit" value="Post">
                 <div>
                     <label for="date">date</label>
-                    <input type="date" id="date" th:field="*{dateCreated}">
+                    <input type="date" id="date" th:field="*{dateCreated}" required>
                 </div>
             </div>
         </form>

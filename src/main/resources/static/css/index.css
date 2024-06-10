@@ -12,13 +12,18 @@
         border-collapse: collapse;
         width: 100%;
         thead > tr{
-            :nth-of-type(1) {
+            :first-of-type {
                 font-size: 22px;
             }
-            :not(:nth-of-type(1)){
-                border-left: lightgrey 2px solid;
+            :not(:first-of-type){
+                border-left: lightgray 2px solid;
                 font-size: 17px;
             }
+        }
+
+        thead > tr{
+            padding-bottom: 5px;
+            border-bottom: lightgray 2px solid;
         }
 
         tbody > tr {
@@ -37,6 +42,16 @@
                 border-left: lightgrey 2px solid;
                 font-size: 16px;
             }
+        }
+    }
+
+    tbody{
+        tr > td {
+            padding: 5px;
+        }
+
+        tr:not(:last-of-type){
+            border-bottom: lightgray 1px solid;
         }
     }
 
