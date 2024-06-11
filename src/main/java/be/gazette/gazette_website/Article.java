@@ -12,15 +12,15 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id = 0L;
-    @NotNull(message = "Title cannot be empty!")
+    @NotBlank(message = "Title cannot be empty!")
     private String title;
-    @NotNull(message = "Category cannot be empty!")
+    @NotBlank(message = "Category cannot be empty!")
     private String category;
-    @NotNull(message = "Author cannot be empty!")
+    @NotBlank(message = "Author cannot be empty!")
     private String author;
-    @NotNull(message = "Email cannot be empty!")
+    @NotBlank(message = "Email cannot be empty!")
     private String email;
-    @NotNull(message = "Content cannot be empty!")
+    @NotBlank(message = "Content cannot be empty!")
     @Column(columnDefinition = "MEDIUMTEXT", nullable = false)
     private String content;
     @NotNull(message = "DateCreated cannot be empty!")

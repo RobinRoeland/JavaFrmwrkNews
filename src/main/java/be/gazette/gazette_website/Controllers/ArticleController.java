@@ -46,7 +46,7 @@ public class ArticleController {
     }
 
     @GetMapping("/newsave")
-    public String addArticle(@Valid Article article, BindingResult bindingResult) {
+    public String addArticle(@Valid @ModelAttribute("article") Article article, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "new";
         }
