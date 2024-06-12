@@ -54,7 +54,7 @@ https://www.baeldung.com/spring-thymeleaf-error-messages
 
 
 
-Voor de langere text op te kunnen slaan heb ik chatGPT het volgonde gevraagd:
+Voor de langere text op te kunnen slaan heb ik chatGPT het volgende gevraagd:
 "i'm writing a newspaper website in java and i need to store large paragraphs in a mysql table.
 I use thymeleaf and spring boot controllers"
 
