@@ -13,38 +13,36 @@
                 <div>
                     <label for="title">Title</label>
                     <input type="text" th:field="*{title}" id="title" placeholder="Major storm destroys city.">
-                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</p>
+                    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</span>
                 </div>
                 <div>
                     <label for="category">category</label>
                     <input type="text" th:field="*{category}" id="category" value="Disaster" placeholder="Disaster">
-                    <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error">Category Error</p>
+                    <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category Error</span>
                 </div>
                 <div>
                     <label for="content">content</label>
                     <textarea style="resize: none;" th:field="*{content}" maxlength="16777215" id="content" placeholder="Major storm destroys city 'Rome' in Italy. So far there are 3 found dead and 23 injured."></textarea>
-                    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error"></p>
+                    <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
                 </div>
                 <div>
                     <label for="email">email</label>
                     <input type="email" id="email" th:field="*{email}" value="testemail@gmail.com" placeholder="testemail@gmail.com" >
-                    <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></p>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                 </div>
                 <div>
                     <label for="author">author</label>
                     <input type="text" id="author" th:field="*{author}" value="Me" placeholder="testUser123">
+                    <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
                 </div>
-                <input type="submit" value="Post">
                 <div>
                     <label for="date">date</label>
-                    <input type="date" id="date" th:field="*{dateCreated}">
+                    <input type="date" id="date" th:field="*{dateCreated}" required>
                 </div>
+                <input type="submit" value="Post">
             </div>
         </form>
     </div>
     <div th:include="fragments/footer :: footer">Footer</div>
 </body>
-<script>
-    document.getElementById("date").value = new Date().toLocaleString();
-</script>
 </html>

@@ -51,3 +51,38 @@ https://www.baeldung.com/spring-data-jpa-findfirst-vs-findtop
 Voor de validatie van mijn input-template heb ik hier nog even de Form-validatie van Spring en thymleaf error message bekeken:
 https://spring.io/guides/gs/validating-form-input
 https://www.baeldung.com/spring-thymeleaf-error-messages
+
+
+
+Voor de langere text op te kunnen slaan heb ik chatGPT het volgonde gevraagd:
+"i'm writing a newspaper website in java and i need to store large paragraphs in a mysql table.
+I use thymeleaf and spring boot controllers"
+
+Hier kreeg ik te veel informatie maar dit is hetgeen dat ik heb teruggekregen en heb gebruikt
+antwoord: 
+"You should define the column in your MySQL table to be able to store large text data. Use the TEXT or LONGTEXT data type for this purpose."
+"In your Spring Boot application, create an entity class that maps to this table. Use JPA annotations to define the mapping."
+"@Column(columnDefinition = "LONGTEXT", nullable = false)
+    private String content;"
+	
+	
+Hierna heb ik nog voor de zekerheid gevraagd wat het maximum aantal characters is en kreeg dit terug: 
+"TINYTEXT: 255 characters (255 bytes)
+TEXT: 65,535 characters (64 KB)
+MEDIUMTEXT: 16,777,215 characters (16 MB)
+LONGTEXT: 4,294,967,295 characters (4 GB)"
+
+Hier zag ik dat LONGTEXT eigenlijk te veel is en ben ik naar MEDIUMTEXT gegaan.
+
+
+Na dit aan te passen en te testen kreeg ik een foutmelding ("HTTP Status 400 – Bad Request") dat ik in dezelfde chat gevraagd heb, dit was de oplossing dat ik kreeg:
+"Ensure that your server can handle large POST requests. In Spring Boot, 
+you can configure this by setting the spring.servlet.multipart.max-request-size and spring.servlet.multipart.max-file-size properties in your application.properties or application.yml file."
+
+"spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=10MB"
+
+Hierna kreeg ik nog een andere fout ("Request header is too large") die ik opnieuw gevraagd heb in dezelfde chat, dit is de oplossing van deze fout:
+"The error "Request header is too large" typically occurs when the HTTP request headers exceed the server's maximum allowed size."
+"You can configure the maximum header size for Tomcat in the application.properties file by setting the server.max-http-header-size property:
+server.max-http-header-size=32768"

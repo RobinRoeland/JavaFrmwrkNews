@@ -9,7 +9,7 @@ form > div {
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 2.5vh;
     align-items: center;
 
     div{
@@ -34,5 +34,13 @@ form > div {
     input[type="submit"] {
         width: 15vw;
         height: 5vh;
+    }
+
+    span{
+        font-weight: normal;
+        font-size: 14px;
+        color: red;
+        margin: 0;
+        padding: 0;
     }
 }
